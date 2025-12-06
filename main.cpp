@@ -117,9 +117,37 @@ void printPath(pair<int,int> exitcell,
 // STUDENTS IMPLEMENT DFS HERE
 // Add arguments, return type, and logic
 // ----------------------------------------------------------
-// bool dfs(……) {
-//     // Your code here
-// }
+bool dfs(int r, int c,
+         const vector<vector<int>>& maze,
+         vector<vector<bool>>& visited,
+         vector<vector<int>>& parent_r,
+         vector<vector<int>>& parent_c,
+         int exit_r, int exit_c)
+    {
+    
+    //Your DFS must handle the following:
+
+    //1. Out-of-bounds checks
+        // int r = rows | int c = columns
+    
+    //2. Wall checks (maze[r][c] == 1)
+        // const vector<vector<int>>& maze = maze
+    
+    //3. Visited checks
+    //4. Marking the current cell as visited
+        // vector<vector<bool>>& visited = visited yes / no
+    
+    //5. Checking if (r, c) is the exit
+    //6. Exploring neighbors using dr and dc
+        // int exit_r = exit row | int exit_c = exit column [boundary cells]
+    
+    //7. Assigning the parent before recursing
+        // vector<vector<int>> parent_r = row of parent cell
+        // vector<vector<int>> parent_c = column of parent cell
+    
+    //8. Returning true when the exit is found
+
+    }
 
 
 // ----------------------------------------------------------
