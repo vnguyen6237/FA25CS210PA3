@@ -125,26 +125,32 @@ bool dfs(int r, int c,
          int exit_r, int exit_c)
     {
     
-    //Your DFS must handle the following:
+    int MR = maze.size();
+        // max rows
+    int MC = maze[0].size();
+        // max columns
 
     //1. Out-of-bounds checks
         // int r = rows | int c = columns
+    if (r < 0 || r >= MR || c < 0 || c >= MC) {
+        return false;
+    }
     
     //2. Wall checks (maze[r][c] == 1)
         // const vector<vector<int>>& maze = maze
-    
+
     //3. Visited checks
     //4. Marking the current cell as visited
         // vector<vector<bool>>& visited = visited yes / no
-    
+
     //5. Checking if (r, c) is the exit
     //6. Exploring neighbors using dr and dc
         // int exit_r = exit row | int exit_c = exit column [boundary cells]
-    
+
     //7. Assigning the parent before recursing
         // vector<vector<int>> parent_r = row of parent cell
         // vector<vector<int>> parent_c = column of parent cell
-    
+
     //8. Returning true when the exit is found
 
     }
