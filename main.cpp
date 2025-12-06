@@ -152,15 +152,29 @@ bool dfs(int r, int c,
     visited[r][c] = true;
 
     //5. Checking if (r, c) is the exit
+    if (r == exit_r && c == exit_c) {
+        return true;
+    }
+
     //6. Exploring neighbors using dr and dc
         // int exit_r = exit row | int exit_c = exit column [boundary cells]
+    for (int i = 0; i < 4; i++) {
+        int nextR = r + dr[i];
+        int nextC = c + dc[i];
 
-    //7. Assigning the parent before recursing
-        // vector<vector<int>> parent_r = row of parent cell
-        // vector<vector<int>> parent_c = column of parent cell
-
-    //8. Returning true when the exit is found
-
+        //7. Assigning the parent before recursing
+            // vector<vector<int>> parent_r = row of parent cell
+            // vector<vector<int>> parent_c = column of parent cell
+        if (nextR >= 0 && nextR < MR && nextC >= 0 && nextC < MC && !visited[nextR][nextC] && maze[nextR][nextC] == 0) {
+            parent_r[nextR][nextC] = r;
+            parent_c[nextR][nextC] = c;
+                if (dfs(nextR, nextC, maze, visited, parent_r, parent_c, exit_r, exit_c)) {
+                    //8. Returning true when the exit is found
+                    return true;
+                }
+        }
+    }
+    return false;
     }
 
 
@@ -201,17 +215,17 @@ int main() {
     // STUDENT WORK:
     // Call your DFS, track visited, and fill parent_r and parent_c
     // ------------------------------------------------------
-    // bool found = dfs(ent_r, ent_c, maze, visited, parent_r, parent_c, exit_r, exit_c);
+     bool found = dfs(ent_r, ent_c, maze, visited, parent_r, parent_c, exit_r, exit_c);
 
     // ------------------------------------------------------
     // STUDENT WORK:
     // If found, print the path
     // ------------------------------------------------------
-    // if (found) {
-    //     printPath(exitcell, parent_r, parent_c, ent_r, ent_c);
-    // } else {
-    //     cout << "\nNo path exists.\n";
-    // }
+     if (found) {
+         printPath(exitcell, parent_r, parent_c, ent_r, ent_c);
+     } else {
+         cout << "\nNo path exists.\n";
+     }
 
     return 0;
 }
