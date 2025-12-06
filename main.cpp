@@ -124,7 +124,7 @@ bool dfs(int r, int c,
          vector<vector<int>>& parent_c,
          int exit_r, int exit_c)
     {
-    
+
     int MR = maze.size();
         // max rows
     int MC = maze[0].size();
@@ -135,13 +135,21 @@ bool dfs(int r, int c,
     if (r < 0 || r >= MR || c < 0 || c >= MC) {
         return false;
     }
-    
+
     //2. Wall checks (maze[r][c] == 1)
+        // 1 = wall , 0 = open space
         // const vector<vector<int>>& maze = maze
+    if (maze[r][c] == 1) {
+        return false;
+    }
 
     //3. Visited checks
+    if (visited[r][c]) {
+        return false;
+    }
     //4. Marking the current cell as visited
         // vector<vector<bool>>& visited = visited yes / no
+    visited[r][c] = true;
 
     //5. Checking if (r, c) is the exit
     //6. Exploring neighbors using dr and dc
